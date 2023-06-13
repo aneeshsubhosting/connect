@@ -149,15 +149,17 @@ class PaymentsApi
             }
 
             return array(\SquareConnect\ObjectSerializer::deserialize($response, '\SquareConnect\Model\CancelPaymentResponse', $httpHeader), $statusCode, $httpHeader);
-                    } catch (ApiException $e) {
+        } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
                 $data = \SquareConnect\ObjectSerializer::deserialize($e->getResponseBody(), '\SquareConnect\Model\CancelPaymentResponse', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
-  
-            throw $e;
+
+            $errors = $e->getResponseBody();
+
+            return array($errors, 500, null);
         }
     }
     /**
