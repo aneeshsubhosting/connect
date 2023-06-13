@@ -24,7 +24,7 @@ class CancelPaymentRequest implements ArrayAccess
       * @var string[]
       */
     static $swaggerTypes = array(
-        
+        'transaction_id' => 'string'
     );
   
     /** 
@@ -32,7 +32,7 @@ class CancelPaymentRequest implements ArrayAccess
       * @var string[] 
       */
     static $attributeMap = array(
-        
+        'transaction_id' => 'transaction_id'
     );
   
     /**
@@ -40,7 +40,7 @@ class CancelPaymentRequest implements ArrayAccess
       * @var string[]
       */
     static $setters = array(
-        
+        'transaction_id' => 'setTransactionId'
     );
   
     /**
@@ -48,9 +48,10 @@ class CancelPaymentRequest implements ArrayAccess
       * @var string[]
       */
     static $getters = array(
-        
+        'transaction_id' => 'getTransactionId'
     );
   
+    protected $transaction_id;
 
     /**
      * Constructor
@@ -59,8 +60,34 @@ class CancelPaymentRequest implements ArrayAccess
     public function __construct(array $data = null)
     {
         if ($data != null) {
+            if (isset($data["transaction_id"])) {
+              $this->transaction_id = $data["transaction_id"];
+            } else {
+              $this->transaction_id = null;
+            }
         }
     }
+    
+    /**
+     * Gets transaction_id
+     * @return string
+     */
+    public function getTransactionId()
+    {
+        return $this->transaction_id;
+    }
+    
+    /**
+     * Sets idempotency_key
+     * @param string $idempotency_key `idempotency_key` identifying the payment to be canceled.
+     * @return $this
+     */
+    public function setTransactionId(transaction_id)
+    {
+        $this->transaction_id = $transaction_id;
+        return $this;
+    }    
+    
     /**
      * Returns true if offset exists. False otherwise.
      * @param  integer $offset Offset 
