@@ -82,7 +82,7 @@ class CancelPaymentRequest implements ArrayAccess
      * @param string $idempotency_key `idempotency_key` identifying the payment to be canceled.
      * @return $this
      */
-    public function setTransactionId(transaction_id)
+    public function setTransactionId($transaction_id)
     {
         $this->transaction_id = $transaction_id;
         return $this;
